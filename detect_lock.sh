@@ -9,7 +9,7 @@
 # Directory to produce the report
 OUTPUT_DIR=/root/troubleshooting/lock_wait/
 # Interval to check in seconds
-INTERVAL=2
+INTERVAL=10
 # Database name
 SCHEMA='dbname'
 # Send notification via telegram, require in PATH: https://github.com/fabianonline/telegram.sh
