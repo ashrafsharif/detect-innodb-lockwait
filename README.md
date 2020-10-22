@@ -1,13 +1,13 @@
 # detect-innodb-lockwait
 
-1) Enable performance schema query intstrumentation:
+1) Enable performance schema query intstrumentations:
 
 ```sql
 UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME = 'events_statements_history';
 UPDATE performance_schema.setup_consumers SET ENABLED = 'YES' WHERE NAME = 'events_statements_history_long';
 ```
 
-2) Verify that the following is enabled:
+2) Verify that the following instrumentations are enabled:
 
 ```sql
 mysql> SELECT * FROM performance_schema.setup_consumers;
@@ -29,7 +29,7 @@ mysql> SELECT * FROM performance_schema.setup_consumers;
 +--------------------------------+---------+
 ```
 
-3) Configure MySQL client credentials inside `~/.my.cnf`. If you are running as root, make sure the following line exist inside `/root/.my.cnf`:
+3) Configure MySQL client credentials inside `$HOME/.my.cnf`. If you are running as root, the `$HOME` path is `/root`, hence, make sure the following lines exist inside `/root/.my.cnf`:
 
 ```
 [mysql]
@@ -37,7 +37,7 @@ user=root
 password=theS3cr3tP4ss
 ```
 
-4) Modify the following:
+4) Modify the following part inside the script:
 
 ```bash
 #-------- Change me -------#
