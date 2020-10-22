@@ -62,6 +62,7 @@ nohup ./detect_lock &
 
 ## Notes
 
-* `INTERVAL=2` might be too aggresive in most cases. If the `innodb_lock_wait_timeout` is set to the default 50 seconds, `INTERVAL=30` should be a good value.
-* `NOTIFY_TELEGRAM=1` requires you to create a bot and channel. Refer to [this blog](https://severalnines.com/database-blog/mobile-alerts-notifications-your-database-using-telegram) for example.
+* `NOTIFY_TELEGRAM=1` requires you to create a bot and channel. Refer to [this blog](https://severalnines.com/database-blog/mobile-alerts-notifications-your-database-using-telegram) for example. Whenever lock-wait transactions are detected for every `INTERVAL` with more than `ACTIVE_TRX` as in InnoDB engine status, you shall receive a notification in your Telegram channel.
 * If you are suffering from this `ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction`, you probably want to set `innodb_rollback_on_timeout=1` first (require MySQL/MariaDB restart) for a full rollback of the failed transaction.
+* `INTERVAL=10` should be a good value to start, for the default `innodb_lock_wait_timeout` (50 seconds). Reduce this number if you want it to be more aggresive.
+* The example of generated report file name under `OUTPUT_DIR` is `report_1603310559`, in the format of `report_{UNIXtimestamp}`. To modify this, find the `filename` variable.
