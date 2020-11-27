@@ -42,7 +42,7 @@ if [[ ! -z $output ]]; then
 	
         echo 'CURRENT QUERIES' >> $OUTPUT_DIR/$filename
         echo '===============' >> $OUTPUT_DIR/$filename
-        mysql -e "SELECT * FROM performance_schema.events_statements_current WHERE CURRENT_SCHEMA = "$SCHEMA" ORDER BY THREAD_ID\G" >> $OUTPUT_DIR/$filename
+        mysql -e "SELECT * FROM performance_schema.events_statements_current WHERE CURRENT_SCHEMA = \"$SCHEMA\" ORDER BY THREAD_ID\G" >> $OUTPUT_DIR/$filename
         echo >> $OUTPUT_DIR/$filename
 	
         echo 'QUERIES HISTORY' >> $OUTPUT_DIR/$filename
